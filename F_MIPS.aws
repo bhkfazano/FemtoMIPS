@@ -1,0 +1,12 @@
+[Version]
+Version=11.1
+[Designs]
+f_mips_design=.\F_MIPS_Design\F_MIPS_Design.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+macro=
+[Expand]
+f_mips_design=1

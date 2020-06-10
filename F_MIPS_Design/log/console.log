@@ -1,0 +1,154 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+acom -O3 -e 100 -work f_mips_design -2002  $dsn/src/top_level.vhd $dsn/src/mux_2x1.vhd $dsn/src/MemoriaPrincipal/memoria_principal.vhd $dsn/src/FemtoMIPS/femto_MIPS.vhd $dsn/src/FemtoMIPS/clock_10ns.vhd $dsn/src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd $dsn/src/FemtoMIPS/InstructionFetch/pc.vhd $dsn/src/FemtoMIPS/InstructionFetch/soma_4.vhd $dsn/src/FemtoMIPS/InstructionFetch/cache_instrucoes.vhd $dsn/src/FemtoMIPS/InstructionFetch/if_id.vhd $dsn/src/FemtoMIPS/InstructionDecode/instruction_decode.vhd $dsn/src/FemtoMIPS/InstructionDecode/mem_register.vhd $dsn/src/FemtoMIPS/InstructionDecode/sign_extend.vhd $dsn/src/FemtoMIPS/InstructionDecode/uc1.vhd $dsn/src/FemtoMIPS/InstructionDecode/id_ex.vhd $dsn/src/FemtoMIPS/InstructionExecution/instruction_execution.vhd $dsn/src/FemtoMIPS/InstructionExecution/shift_left_2.vhd $dsn/src/FemtoMIPS/InstructionExecution/soma.vhd $dsn/src/FemtoMIPS/InstructionExecution/ula.vhd $dsn/src/FemtoMIPS/InstructionExecution/c_ula.vhd $dsn/src/FemtoMIPS/InstructionExecution/ex_md.vhd $dsn/src/FemtoMIPS/MemoriaDado/memoria_dado.vhd $dsn/src/FemtoMIPS/MemoriaDado/and2.vhd $dsn/src/FemtoMIPS/MemoriaDado/cache_dados.vhd $dsn/src/FemtoMIPS/MemoriaDado/md_wb.vhd $dsn/src/FemtoMIPS/WriteBack/write_back.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/top_level.vhd
+# Warning: COMP96_0003: Source file "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/top_level.vhd" is empty.
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/mux_2x1.vhd
+# Compile Entity "mux_2x1"
+# Compile Architecture "arch_mux_2x1" of Entity "mux_2x1"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/MemoriaPrincipal/memoria_principal.vhd
+# Compile Entity "memoria_principal"
+# Compile Architecture "arch_memoria_principal" of Entity "memoria_principal"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/femto_MIPS.vhd
+# Compile Entity "femto_MIPS"
+# Compile Architecture "arch_femto_MIPS" of Entity "femto_MIPS"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/clock_10ns.vhd
+# Compile Entity "clock_10ns"
+# Compile Architecture "arch_clock_10ns" of Entity "clock_10ns"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd
+# Compile Entity "instruction_fetch"
+# Compile Architecture "arch_instruction_fetch" of Entity "instruction_fetch"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/pc.vhd
+# Compile Entity "pc"
+# Compile Architecture "arch_pc" of Entity "pc"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/soma_4.vhd
+# Compile Entity "soma_4"
+# Compile Architecture "arch_soma_4" of Entity "soma_4"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/cache_instrucoes.vhd
+# Compile Entity "cache_instrucoes"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/if_id.vhd
+# Compile Entity "if_id"
+# Compile Architecture "arch_if_id" of Entity "if_id"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/instruction_decode.vhd
+# Compile Entity "instruction_decode"
+# Compile Architecture "arch_instruction_decode" of Entity "instruction_decode"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/mem_register.vhd
+# Compile Entity "mem_register"
+# Compile Architecture "arch_mem_register" of Entity "mem_register"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/sign_extend.vhd
+# Compile Entity "sign_extend"
+# Compile Architecture "arch_sign_extend" of Entity "sign_extend"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/uc1.vhd
+# Compile Entity "uc1"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/id_ex.vhd
+# Compile Entity "id_ex"
+# Compile Architecture "arch_id_ex" of Entity "id_ex"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/instruction_execution.vhd
+# Compile Entity "instruction_execution"
+# Compile Architecture "arch_instruction_execution" of Entity "instruction_execution"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/shift_left_2.vhd
+# Compile Entity "shift_left_2"
+# Compile Architecture "arch_shift_left_2" of Entity "shift_left_2"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/soma.vhd
+# Compile Entity "soma"
+# Compile Architecture "arch_soma" of Entity "soma"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ula.vhd
+# Compile Entity "ula"
+# Compile Architecture "arch_ula" of Entity "ula"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/c_ula.vhd
+# Compile Entity "c_ula"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ex_md.vhd
+# Compile Entity "ex_md"
+# Compile Architecture "arch_ex_md" of Entity "ex_md"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/memoria_dado.vhd
+# Compile Entity "memoria_dado"
+# Compile Architecture "arch_memoria_dado" of Entity "memoria_dado"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/and2.vhd
+# Compile Entity "and2"
+# Compile Architecture "arch_and2" of Entity "and2"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/cache_dados.vhd
+# Compile Entity "cache_dados"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/md_wb.vhd
+# Compile Entity "md_wb"
+# Compile Architecture "arch_md_wb" of Entity "md_wb"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/WriteBack/write_back.vhd
+# Compile Entity "write_back"
+# Compile Architecture "arch_write_back" of Entity "write_back"
+# Compile success 0 Errors 1 Warnings  Analysis time :  1.0 [s]
+acom -O3 -e 100 -work f_mips_design -2002  $dsn/src/top_level.vhd $dsn/src/mux_2x1.vhd $dsn/src/MemoriaPrincipal/memoria_principal.vhd $dsn/src/FemtoMIPS/femto_MIPS.vhd $dsn/src/FemtoMIPS/clock_10ns.vhd $dsn/src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd $dsn/src/FemtoMIPS/InstructionFetch/pc.vhd $dsn/src/FemtoMIPS/InstructionFetch/soma_4.vhd $dsn/src/FemtoMIPS/InstructionFetch/cache_instrucoes.vhd $dsn/src/FemtoMIPS/InstructionFetch/if_id.vhd $dsn/src/FemtoMIPS/InstructionDecode/instruction_decode.vhd $dsn/src/FemtoMIPS/InstructionDecode/mem_register.vhd $dsn/src/FemtoMIPS/InstructionDecode/sign_extend.vhd $dsn/src/FemtoMIPS/InstructionDecode/uc1.vhd $dsn/src/FemtoMIPS/InstructionDecode/id_ex.vhd $dsn/src/FemtoMIPS/InstructionExecution/instruction_execution.vhd $dsn/src/FemtoMIPS/InstructionExecution/shift_left_2.vhd $dsn/src/FemtoMIPS/InstructionExecution/soma.vhd $dsn/src/FemtoMIPS/InstructionExecution/ula.vhd $dsn/src/FemtoMIPS/InstructionExecution/c_ula.vhd $dsn/src/FemtoMIPS/InstructionExecution/ex_md.vhd $dsn/src/FemtoMIPS/MemoriaDado/memoria_dado.vhd $dsn/src/FemtoMIPS/MemoriaDado/and2.vhd $dsn/src/FemtoMIPS/MemoriaDado/cache_dados.vhd $dsn/src/FemtoMIPS/MemoriaDado/md_wb.vhd $dsn/src/FemtoMIPS/WriteBack/write_back.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/top_level.vhd
+# Warning: COMP96_0003: Source file "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/top_level.vhd" is empty.
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/mux_2x1.vhd
+# Compile Entity "mux_2x1"
+# Compile Architecture "arch_mux_2x1" of Entity "mux_2x1"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/MemoriaPrincipal/memoria_principal.vhd
+# Compile Entity "memoria_principal"
+# Compile Architecture "arch_memoria_principal" of Entity "memoria_principal"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/femto_MIPS.vhd
+# Compile Entity "femto_MIPS"
+# Compile Architecture "arch_femto_MIPS" of Entity "femto_MIPS"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/clock_10ns.vhd
+# Compile Entity "clock_10ns"
+# Compile Architecture "arch_clock_10ns" of Entity "clock_10ns"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd
+# Compile Entity "instruction_fetch"
+# Compile Architecture "arch_instruction_fetch" of Entity "instruction_fetch"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/pc.vhd
+# Compile Entity "pc"
+# Compile Architecture "arch_pc" of Entity "pc"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/soma_4.vhd
+# Compile Entity "soma_4"
+# Compile Architecture "arch_soma_4" of Entity "soma_4"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/cache_instrucoes.vhd
+# Compile Entity "cache_instrucoes"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/if_id.vhd
+# Compile Entity "if_id"
+# Compile Architecture "arch_if_id" of Entity "if_id"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/instruction_decode.vhd
+# Compile Entity "instruction_decode"
+# Compile Architecture "arch_instruction_decode" of Entity "instruction_decode"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/mem_register.vhd
+# Compile Entity "mem_register"
+# Compile Architecture "arch_mem_register" of Entity "mem_register"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/sign_extend.vhd
+# Compile Entity "sign_extend"
+# Compile Architecture "arch_sign_extend" of Entity "sign_extend"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/uc1.vhd
+# Compile Entity "uc1"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionDecode/id_ex.vhd
+# Compile Entity "id_ex"
+# Compile Architecture "arch_id_ex" of Entity "id_ex"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/instruction_execution.vhd
+# Compile Entity "instruction_execution"
+# Compile Architecture "arch_instruction_execution" of Entity "instruction_execution"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/shift_left_2.vhd
+# Compile Entity "shift_left_2"
+# Compile Architecture "arch_shift_left_2" of Entity "shift_left_2"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/soma.vhd
+# Compile Entity "soma"
+# Compile Architecture "arch_soma" of Entity "soma"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ula.vhd
+# Compile Entity "ula"
+# Compile Architecture "arch_ula" of Entity "ula"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/c_ula.vhd
+# Compile Entity "c_ula"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ex_md.vhd
+# Compile Entity "ex_md"
+# Compile Architecture "arch_ex_md" of Entity "ex_md"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/memoria_dado.vhd
+# Compile Entity "memoria_dado"
+# Compile Architecture "arch_memoria_dado" of Entity "memoria_dado"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/and2.vhd
+# Compile Entity "and2"
+# Compile Architecture "arch_and2" of Entity "and2"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/cache_dados.vhd
+# Compile Entity "cache_dados"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/md_wb.vhd
+# Compile Entity "md_wb"
+# Compile Architecture "arch_md_wb" of Entity "md_wb"
+# File: C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/WriteBack/write_back.vhd
+# Compile Entity "write_back"
+# Compile Architecture "arch_write_back" of Entity "write_back"
+# Compile success 0 Errors 1 Warnings  Analysis time :  0.8 [s]
