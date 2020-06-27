@@ -3,7 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity memoria_dado is
-	port( EX_MDo: in std_logic_vector(100 downto 0);
+	port( pause, bubb: in std_logic;
+		EX_MDo: in std_logic_vector(100 downto 0);
 		cWBo: in std_logic_vector(1 downto 0);
 		cMDo: in std_logic_vector(2 downto 0);
 		zero, clkMD_WB: in std_logic;
@@ -23,13 +24,15 @@ architecture arch_memoria_dado of memoria_dado is
 	end component;
 	
 	component cache_dados is
-		port( endr, endw, dataw: in std_logic_vector(31 downto 0);
+		port( clk: in std_logic;
+			endr, endw, dataw: in std_logic_vector(31 downto 0);
 			memRead, memWrite: in std_logic;		
 			datao: out std_logic_vector(31 downto 0));
 	end component;
 	
 	component md_wb is
-		port( cWBo: in std_logic_vector(1 downto 0);
+		port( pause, bubb: in std_logic;
+			cWBo: in std_logic_vector(1 downto 0);
 			dmout, regout: in std_logic_vector(31 downto 0);
 			endw: in std_logic_vector(4 downto 0);
 			clkMD_WB: in std_logic;
@@ -42,9 +45,10 @@ architecture arch_memoria_dado of memoria_dado is
 	
 begin
 	AND_2: and2 port map (cMDo(0), zero, pcsrc);
-	CACHED: cache_dados port map (EX_MDo(63 downto 32), EX_MDo(63 downto 32), EX_MDo(95 downto 64), cMDo(1), 
+	CACHED: cache_dados port map (clkMD_WB, EX_MDo(63 downto 32), EX_MDo(63 downto 32), EX_MDo(95 downto 64), cMDo(1), 
 			cMDo(2), sig_dmout);
-	MDWB: md_wb port map (cWBo, sig_dmout, EX_MDo(95 downto 64), EX_MDo(100 downto 96), clkMD_WB, cWBo1, MD_WBo);
+	MDWB: md_wb port map (pause, bubb, cWBo, sig_dmout, EX_MDo(95 downto 64), EX_MDo(100 downto 96), clkMD_WB, 
+			cWBo1, MD_WBo);
 	
 	npcj <= EX_MDo(31 downto 0);
 	

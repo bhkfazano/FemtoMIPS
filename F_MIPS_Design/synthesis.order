@@ -25,3 +25,8 @@ i<>.\src\and2.vhd
 i<>.\src\cache_dados.vhd
 i<>.\src\md_wb.vhd
 i<>.\src\clock_10ns.vhd
+i<>.\src\mux_4x1.vhd
+i<>.\src\pulse_generator.vhd
+i<>.\src\forwarding.vhd
+i<>.\src\hold_signal.vhd
+i<>.\src\hold_signal_vector.vhd

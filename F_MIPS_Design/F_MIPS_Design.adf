@@ -28,7 +28,7 @@ FAMILY=Xilinx14x SPARTAN3
 WindowVisible=0
 
 [HierarchyViewer]
-HierarchyInformation=sign_extend|arch_sign_extend|0       
+HierarchyInformation=femto_mips|arch_femto_MIPS|0    
 ShowHide=ShowTopLevel
 Selected=
 
@@ -44,9 +44,12 @@ FemtoMIPS\WriteBack=1
 [Files]
 /top_level.vhd=-1
 /mux_2x1.vhd=-1
+/mux_4x1.vhd=-1
+/and2.vhd=-1
 MemoriaPrincipal/memoria_principal.vhd=-1
 FemtoMIPS/femto_MIPS.vhd=-1
 FemtoMIPS/clock_10ns.vhd=-1
+FemtoMIPS/forwarding.vhd=-1
 FemtoMIPS\InstructionFetch/instruction_fetch.vhd=-1
 FemtoMIPS\InstructionFetch/pc.vhd=-1
 FemtoMIPS\InstructionFetch/soma_4.vhd=-1
@@ -61,10 +64,8 @@ FemtoMIPS\InstructionExecution/instruction_execution.vhd=-1
 FemtoMIPS\InstructionExecution/shift_left_2.vhd=-1
 FemtoMIPS\InstructionExecution/soma.vhd=-1
 FemtoMIPS\InstructionExecution/ula.vhd=-1
-FemtoMIPS\InstructionExecution/c_ula.vhd=-1
 FemtoMIPS\InstructionExecution/ex_md.vhd=-1
 FemtoMIPS\MemoriaDado/memoria_dado.vhd=-1
-FemtoMIPS\MemoriaDado/and2.vhd=-1
 FemtoMIPS\MemoriaDado/cache_dados.vhd=-1
 FemtoMIPS\MemoriaDado/md_wb.vhd=-1
 FemtoMIPS\WriteBack/write_back.vhd=-1
@@ -72,9 +73,12 @@ FemtoMIPS\WriteBack/write_back.vhd=-1
 [Files.Data]
 .\src\top_level.vhd=VHDL Source Code
 .\src\mux_2x1.vhd=VHDL Source Code
+.\src\mux_4x1.vhd=VHDL Source Code
+.\src\and2.vhd=VHDL Source Code
 .\src\MemoriaPrincipal\memoria_principal.vhd=VHDL Source Code
 .\src\FemtoMIPS\femto_MIPS.vhd=VHDL Source Code
 .\src\FemtoMIPS\clock_10ns.vhd=VHDL Source Code
+.\src\FemtoMIPS\forwarding.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionFetch\instruction_fetch.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionFetch\pc.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionFetch\soma_4.vhd=VHDL Source Code
@@ -89,10 +93,8 @@ FemtoMIPS\WriteBack/write_back.vhd=-1
 .\src\FemtoMIPS\InstructionExecution\shift_left_2.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionExecution\soma.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionExecution\ula.vhd=VHDL Source Code
-.\src\FemtoMIPS\InstructionExecution\c_ula.vhd=VHDL Source Code
 .\src\FemtoMIPS\InstructionExecution\ex_md.vhd=VHDL Source Code
 .\src\FemtoMIPS\MemoriaDado\memoria_dado.vhd=VHDL Source Code
-.\src\FemtoMIPS\MemoriaDado\and2.vhd=VHDL Source Code
 .\src\FemtoMIPS\MemoriaDado\cache_dados.vhd=VHDL Source Code
 .\src\FemtoMIPS\MemoriaDado\md_wb.vhd=VHDL Source Code
 .\src\FemtoMIPS\WriteBack\write_back.vhd=VHDL Source Code

@@ -10,9 +10,11 @@ entity mux_2x1 is
 end mux_2x1;
 
 architecture arch_mux_2x1 of mux_2x1 is
+	signal sig_out1: std_logic_vector(WIDTH-1 downto 0) := (others => '0');
 begin
-	out1 <= in1 when sel = '0' else
+	sig_out1 <= in1 when sel = '0' else
 		in2 when sel = '1' else
 		(others => '0');
+	out1 <= sig_out1;
 
 end arch_mux_2x1;

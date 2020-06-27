@@ -1,8 +1,11 @@
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/top_level.vhd" VHDL f_mips_design 2 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/mux_2x1.vhd" VHDL f_mips_design 1 0 0 -02
+"C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/mux_4x1.vhd" VHDL f_mips_design 1 0 0 -02
+"C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/and2.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/MemoriaPrincipal/memoria_principal.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/femto_MIPS.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/clock_10ns.vhd" VHDL f_mips_design 1 0 0 -02
+"C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/forwarding.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/pc.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionFetch/soma_4.vhd" VHDL f_mips_design 1 0 0 -02
@@ -17,10 +20,8 @@
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/shift_left_2.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/soma.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ula.vhd" VHDL f_mips_design 1 0 0 -02
-"C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/c_ula.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/InstructionExecution/ex_md.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/memoria_dado.vhd" VHDL f_mips_design 1 0 0 -02
-"C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/and2.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/cache_dados.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/MemoriaDado/md_wb.vhd" VHDL f_mips_design 1 0 0 -02
 "C:/Users/Victor/Desktop/F_MIPS/F_MIPS_Design/src/FemtoMIPS/WriteBack/write_back.vhd" VHDL f_mips_design 1 0 0 -02

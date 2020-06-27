@@ -9,6 +9,6 @@ end soma;
 
 architecture arch_soma of soma is
 begin
-	out1 <= std_logic_vector(to_unsigned(to_integer(unsigned(in1)) + to_integer(unsigned(in2)), out1'length));
+	out1 <= std_logic_vector(to_signed(to_integer(signed(in1)) + to_integer(signed(in2)), out1'length));
 	
 end arch_soma;

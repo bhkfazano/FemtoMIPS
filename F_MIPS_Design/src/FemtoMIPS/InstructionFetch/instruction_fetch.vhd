@@ -3,12 +3,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity instruction_fetch is
-	port( clkIF_ID, clkCInst, clkPC, selPC: in std_logic;
+	port( cont_en, pause, bubb: in std_logic;
+		clkIF_ID, clkCInst, clkPC, selPC: in std_logic;
 		npcj: in std_logic_vector(31 downto 0);
 		IF_IDout: out std_logic_vector(63 downto 0));
 end instruction_fetch;
 
-architecture arch_instruction_fetch of instruction_fetch is		 
+architecture arch_instruction_fetch of instruction_fetch is
 
 	component mux_2x1 is
 		generic( WIDTH: integer);
@@ -18,7 +19,8 @@ architecture arch_instruction_fetch of instruction_fetch is
 	end component;	
 	
 	component pc is
-		port( pcin: in std_logic_vector(31 downto 0);
+		port( cont_en: in std_logic;
+			pcin: in std_logic_vector(31 downto 0);
 			cPC: in std_logic;
 			pcout: out std_logic_vector(31 downto 0));
 	end component;			
@@ -35,7 +37,8 @@ architecture arch_instruction_fetch of instruction_fetch is
 	end component;	   
 	
 	component if_id is
-		port( npc, inst: in std_logic_vector(31 downto 0);
+		port( pause, bubb: in std_logic;
+			npc, inst: in std_logic_vector(31 downto 0);
 			cIF_ID: in std_logic;
 			out1: out std_logic_vector(63 downto 0));
 	end component;
@@ -44,9 +47,9 @@ architecture arch_instruction_fetch of instruction_fetch is
 	
 begin
 	MUX: mux_2x1 generic map (32) port map (sig_pc4, npcj, selPC, sig_newpc);
-	PCount: pc port map (sig_newpc, clkPC, sig_pc);	
+	PCount: pc port map (cont_en, sig_newpc, clkPC, sig_pc);
 	SOMA4: soma_4 port map (sig_pc, sig_pc4);
 	CACHEINST: cache_instrucoes port map (sig_pc, clkCInst, sig_inst);
-	IFID: if_id port map (sig_pc4, sig_inst, clkIF_ID, IF_IDout);
+	IFID: if_id port map (pause, bubb, sig_pc4, sig_inst, clkIF_ID, IF_IDout);
 		
 end arch_instruction_fetch;

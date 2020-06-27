@@ -1,8 +1,11 @@
 .\src\top_level.vhd
 .\src\mux_2x1.vhd
+.\src\mux_4x1.vhd
+.\src\and2.vhd
 .\src\MemoriaPrincipal\memoria_principal.vhd
 .\src\FemtoMIPS\femto_MIPS.vhd
 .\src\FemtoMIPS\clock_10ns.vhd
+.\src\FemtoMIPS\forwarding.vhd
 .\src\FemtoMIPS\InstructionFetch\instruction_fetch.vhd
 .\src\FemtoMIPS\InstructionFetch\pc.vhd
 .\src\FemtoMIPS\InstructionFetch\soma_4.vhd
@@ -17,10 +20,8 @@
 .\src\FemtoMIPS\InstructionExecution\shift_left_2.vhd
 .\src\FemtoMIPS\InstructionExecution\soma.vhd
 .\src\FemtoMIPS\InstructionExecution\ula.vhd
-.\src\FemtoMIPS\InstructionExecution\c_ula.vhd
 .\src\FemtoMIPS\InstructionExecution\ex_md.vhd
 .\src\FemtoMIPS\MemoriaDado\memoria_dado.vhd
-.\src\FemtoMIPS\MemoriaDado\and2.vhd
 .\src\FemtoMIPS\MemoriaDado\cache_dados.vhd
 .\src\FemtoMIPS\MemoriaDado\md_wb.vhd
 .\src\FemtoMIPS\WriteBack\write_back.vhd

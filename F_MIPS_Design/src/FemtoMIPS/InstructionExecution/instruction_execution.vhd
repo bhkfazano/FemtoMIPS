@@ -3,10 +3,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity instruction_execution is
-	port( ID_EXout: in std_logic_vector(137 downto 0);
+	port( pause, bubb: in std_logic;
+		reg_md, dataw: in std_logic_vector(31 downto 0);
+		mux1_ctl, mux2_ctl: in std_logic_vector(1 downto 0);
+		ID_EXout: in std_logic_vector(137 downto 0);
 		cWBo: in std_logic_vector(1 downto 0);
 		cMDo: in std_logic_vector(2 downto 0);
-		cEXo: in std_logic_vector(3 downto 0);
+		cEXo: in std_logic_vector(8 downto 0);
 		clkEX_MD: in std_logic;
 		
 		cWBo1: out std_logic_vector(1 downto 0);
@@ -35,12 +38,6 @@ architecture arch_instruction_execution of instruction_execution is
 				zero: out std_logic);
 	end component;
 	
-	component c_ula is
-		port( in1: in std_logic_vector(5 downto 0);
-			ulaop: in std_logic_vector(1 downto 0);
-			out1: std_logic_vector(2 downto 0));
-	end component;
-	
 	component mux_2x1 is
 		generic( WIDTH: integer);
 		port( in1, in2: in std_logic_vector(WIDTH-1 downto 0);
@@ -48,8 +45,16 @@ architecture arch_instruction_execution of instruction_execution is
 			out1: out std_logic_vector(WIDTH-1 downto 0));
 	end component;
 	
+	component mux_4x1 is
+		generic( WIDTH: integer);
+		port( in1, in2, in3, in4: in std_logic_vector(WIDTH-1 downto 0);
+			sel: in std_logic_vector(1 downto 0);
+			out1: out std_logic_vector(WIDTH-1 downto 0));
+	end component;
+	
 	component ex_md is
-		port( cWBo: in std_logic_vector(1 downto 0);
+		port( pause, bubb: in std_logic;
+			cWBo: in std_logic_vector(1 downto 0);
 			cMDo: in std_logic_vector(2 downto 0);
 			npcj: in std_logic_vector(31 downto 0);
 			zero: in std_logic;
@@ -63,19 +68,29 @@ architecture arch_instruction_execution of instruction_execution is
 			EX_MDo: out std_logic_vector(100 downto 0));
 	end component;
 	
-	signal sig_sl2, sig_npcj, sig_mx2, sig_ulao: std_logic_vector(31 downto 0);
+	signal sig_sl2, sig_npcj, sig_mx_npcj, sig_mx2, sig_ulao, sig_reg: std_logic_vector(31 downto 0);
 	signal sig_zero: std_logic;
-	signal sig_ctl: std_logic_vector(2 downto 0);
+	signal sig_cEXo_2_0: std_logic_vector(1 downto 0);
 	signal sig_endreg: std_logic_vector(4 downto 0);
+	signal sig_31: std_logic_vector(4 downto 0) := (others => '1');
+	signal sig_rega, sig_regb: std_logic_vector(31 downto 0);
 	
 begin
+	sig_cEXo_2_0 <= cEXo(2) & cEXo(0);
+	
+	MUX_Rega: mux_4x1 generic map (32) port map (ID_EXout(105 downto 74), reg_md, dataw, dataw, mux1_ctl, sig_rega);
+	MUX_Regb: mux_4x1 generic map (32) port map (ID_EXout(73 downto 42), reg_md, dataw, dataw, mux2_ctl, sig_regb);
 	SL_2: shift_left_2 port map (ID_EXout(41 downto 10), sig_sl2);
 	SOMA2: soma port map (ID_EXout(137 downto 106), sig_sl2, sig_npcj);
-	MUX1: mux_2x1 generic map (5) port map (ID_EXout(9 downto 5), ID_EXout(4 downto 0), cEXo(0), sig_endreg);
-	MUX2: mux_2x1 generic map (32) port map (ID_EXout(73 downto 42), ID_EXout(41 downto 10), cEXo(3), sig_mx2);
-	ContULA: c_ula port map (ID_EXout(15 downto 10), cEXo(2 downto 1), sig_ctl);
-	ULArit: ula port map (ID_EXout(105 downto 74), sig_mx2, sig_ctl, sig_ulao, sig_zero);
-	EXMD: ex_md port map (cWBo, cMDo, sig_npcj, sig_zero, sig_ulao, ID_EXout(73 downto 42), sig_endreg, clkEX_MD, 
+	MUX_EndReg: mux_4x1 generic map (5) port map (ID_EXout(9 downto 5), ID_EXout(4 downto 0), sig_31, sig_31, 
+			sig_cEXo_2_0, sig_endreg);
+	MUX_2op: mux_2x1 generic map (32) port map (sig_regb, ID_EXout(41 downto 10), cEXo(3), sig_mx2);
+	MUX_Reg: mux_4x1 generic map (32) port map (sig_regb, sig_ulao, ID_EXout(137 downto 106), 
+			ID_EXout(137 downto 106), cEXo(2 downto 1), sig_reg);
+	MUX_NPCJ: mux_4x1 generic map (32) port map (sig_npcj, sig_rega, sig_mx2, sig_mx2, 
+			cEXo(8 downto 7), sig_mx_npcj);
+	ULArit: ula port map (sig_rega, sig_mx2, cEXo(6 downto 4), sig_ulao, sig_zero);
+	EXMD: ex_md port map (pause, bubb, cWBo, cMDo, sig_mx_npcj, sig_zero, sig_ulao, sig_reg, sig_endreg, clkEX_MD, 
 			cWBo1, cMDo1, zero, EX_MDout);
 	
 end arch_instruction_execution;

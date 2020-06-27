@@ -1,28 +1,53 @@
-Active-HDL 11.1.262.7351 2020-06-10 18:21:13
+Active-HDL 11.1.262.7351 2020-06-27 01:29:02
 
 Elaboration top modules:
-Architecture                  arch_sign_extend(sign_extend)
+Architecture                  arch_femto_MIPS(femto_MIPS)
 
 
-------------------------------------------------------------------------------------------------------
-Entity      | Architecture     | Library       | Info | Compiler Version        | Compilation Options
-------------------------------------------------------------------------------------------------------
-sign_extend | arch_sign_extend | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
-------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+Entity                | Architecture               | Library       | Info | Compiler Version        | Compilation Options
+--------------------------------------------------------------------------------------------------------------------------
+femto_MIPS            | arch_femto_MIPS            | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+clock_10ns            | arch_clock_10ns            | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+forwarding            | arch_forwarding            | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+instruction_fetch     | arch_instruction_fetch     | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+instruction_decode    | arch_instruction_decode    | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+instruction_execution | arch_instruction_execution | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+memoria_dado          | arch_memoria_dado          | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+write_back            | arch_write_back            | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+mux_2x1               | arch_mux_2x1               | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+pc                    | arch_pc                    | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+soma_4                | arch_soma_4                | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+cache_instrucoes      | arch_cache_instrucoes      | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+if_id                 | arch_if_id                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+mem_register          | arch_mem_register          | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+sign_extend           | arch_sign_extend           | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+uc1                   | arch_uc1                   | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+id_ex                 | arch_id_ex                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+mux_4x1               | arch_mux_4x1               | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+shift_left_2          | arch_shift_left_2          | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+soma                  | arch_soma                  | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+ula                   | arch_ula                   | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+ex_md                 | arch_ex_md                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+and2                  | arch_and2                  | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+cache_dados           | arch_cache_dados           | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+md_wb                 | arch_md_wb                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+--------------------------------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------------------
-VHDL Package                   | Library       | Info | Compiler Version        | Compilation Options
-------------------------------------------------------------------------------------------------------
-standard                       | std           |      |                         | <unavailable>
-TEXTIO                         | std           |      |                         | <unavailable>
-std_logic_1164                 | ieee          |      |                         | <unavailable>
-NUMERIC_STD                    | ieee          |      |                         | <unavailable>
-------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+VHDL Package                                       | Library       | Info | Compiler Version        | Compilation Options
+--------------------------------------------------------------------------------------------------------------------------
+standard                                           | std           |      |                         | <unavailable>
+TEXTIO                                             | std           |      |                         | <unavailable>
+std_logic_1164                                     | ieee          |      |                         | <unavailable>
+NUMERIC_STD                                        | ieee          |      |                         | <unavailable>
+STD_LOGIC_TEXTIO                                   | ieee          |      |                         | <unavailable>
+--------------------------------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------------------
-Library                        | Comment
-------------------------------------------------------------------------------------------------------
-f_mips_design                  | None
-ieee                           | Standard IEEE packages library
-std                            | Standard VHDL library
-------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+Library                                            | Comment
+--------------------------------------------------------------------------------------------------------------------------
+f_mips_design                                      | None
+ieee                                               | Standard IEEE packages library
+std                                                | Standard VHDL library
+--------------------------------------------------------------------------------------------------------------------------
