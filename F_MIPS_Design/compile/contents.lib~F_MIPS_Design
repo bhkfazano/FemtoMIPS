@@ -1,4 +1,4 @@
-754
+839
 ~E 1 "../src/FemtoMIPS/MemoriaDado/and2.vhd" 5 and2
 ~A 1 "../src/and2.vhd" 10 arch_and2
 ~E 1 "../src/FemtoMIPS/InstructionExecution/c_ula.vhd" 5 c_ula
@@ -21,13 +21,13 @@
 ~E 1 "../src/FemtoMIPS/InstructionFetch/hold_signal_vector.vhd" 5 hold_signal_vector
 ~A 1 "../src/FemtoMIPS/MemoriaDado/hold_signal_vector.vhd" 11 arch_hold_signal_vector
 ~E 1 "../src/FemtoMIPS/InstructionDecode/id_ex.vhd" 5 id_ex
-~A 1 "../src/FemtoMIPS/InstructionDecode/id_ex.vhd" 22 arch_id_ex
+~A 1 "../src/FemtoMIPS/InstructionDecode/id_ex.vhd" 24 arch_id_ex
 ~E 1 "../src/FemtoMIPS/InstructionFetch/if_id.vhd" 5 if_id
 ~A 1 "../src/FemtoMIPS/InstructionFetch/if_id.vhd" 12 arch_if_id
 ~E 1 "../src/FemtoMIPS/InstructionDecode/instruction_decode.vhd" 5 instruction_decode
-~A 1 "../src/FemtoMIPS/InstructionDecode/instruction_decode.vhd" 18 arch_instruction_decode
+~A 1 "../src/FemtoMIPS/InstructionDecode/instruction_decode.vhd" 19 arch_instruction_decode
 ~E 1 "../src/FemtoMIPS/InstructionExecution/instruction_execution.vhd" 5 instruction_execution
-~A 1 "../src/FemtoMIPS/InstructionExecution/instruction_execution.vhd" 22 arch_instruction_execution
+~A 1 "../src/FemtoMIPS/InstructionExecution/instruction_execution.vhd" 23 arch_instruction_execution
 ~E 1 "../src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd" 5 instruction_fetch
 ~A 1 "../src/FemtoMIPS/InstructionFetch/instruction_fetch.vhd" 12 arch_instruction_fetch
 ~E 1 "../src/FemtoMIPS/MemoriaDado/md_wb.vhd" 5 md_wb
@@ -52,13 +52,13 @@
 ~E 1 "../src/FemtoMIPS/InstructionExecution/shift_left_2.vhd" 5 shift_left_2
 ~A 1 "../src/FemtoMIPS/InstructionExecution/shift_left_2.vhd" 10 arch_shift_left_2
 ~E 1 "../src/FemtoMIPS/InstructionDecode/sign_extend.vhd" 5 sign_extend
-~A 1 "../src/FemtoMIPS/InstructionDecode/sign_extend.vhd" 11 arch_sign_extend
+~A 1 "../src/FemtoMIPS/InstructionDecode/sign_extend.vhd" 10 arch_sign_extend
 ~E 1 "../src/FemtoMIPS/InstructionExecution/soma.vhd" 5 soma
 ~A 1 "../src/FemtoMIPS/InstructionExecution/soma.vhd" 10 arch_soma
 ~E 1 "../src/FemtoMIPS/InstructionFetch/soma_4.vhd" 5 soma_4
 ~A 1 "../src/FemtoMIPS/InstructionFetch/soma_4.vhd" 10 arch_soma_4
 ~E 1 "../src/FemtoMIPS/InstructionDecode/uc1.vhd" 5 uc1
-~A 1 "../src/FemtoMIPS/InstructionDecode/uc1.vhd" 14 arch_uc1
+~A 1 "../src/FemtoMIPS/InstructionDecode/uc1.vhd" 13 arch_uc1
 ~E 1 "../src/FemtoMIPS/InstructionExecution/ula.vhd" 5 ula
 ~A 1 "../src/FemtoMIPS/InstructionExecution/ula.vhd" 12 arch_ula
 ~E 1 "../src/FemtoMIPS/WriteBack/write_back.vhd" 5 write_back

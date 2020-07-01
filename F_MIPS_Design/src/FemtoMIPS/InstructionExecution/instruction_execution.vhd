@@ -9,8 +9,9 @@ entity instruction_execution is
 		ID_EXout: in std_logic_vector(137 downto 0);
 		cWBo: in std_logic_vector(1 downto 0);
 		cMDo: in std_logic_vector(2 downto 0);
-		cEXo: in std_logic_vector(8 downto 0);
+		cEXo: in std_logic_vector(9 downto 0);
 		clkEX_MD: in std_logic;
+		jump_to: in std_logic_vector(31 downto 0);
 		
 		cWBo1: out std_logic_vector(1 downto 0);
 		cMDo1: out std_logic_vector(2 downto 0);
@@ -68,7 +69,7 @@ architecture arch_instruction_execution of instruction_execution is
 			EX_MDo: out std_logic_vector(100 downto 0));
 	end component;
 	
-	signal sig_sl2, sig_npcj, sig_mx_npcj, sig_mx2, sig_ulao, sig_reg: std_logic_vector(31 downto 0);
+	signal sig_sl2, sig_npcj, sig_mx_npcj, sig_mx1, sig_mx2, sig_ulao, sig_reg: std_logic_vector(31 downto 0);
 	signal sig_zero: std_logic;
 	signal sig_cEXo_2_0: std_logic_vector(1 downto 0);
 	signal sig_endreg: std_logic_vector(4 downto 0);
@@ -84,12 +85,13 @@ begin
 	SOMA2: soma port map (ID_EXout(137 downto 106), sig_sl2, sig_npcj);
 	MUX_EndReg: mux_4x1 generic map (5) port map (ID_EXout(9 downto 5), ID_EXout(4 downto 0), sig_31, sig_31, 
 			sig_cEXo_2_0, sig_endreg);
+	MUX_1op: mux_2x1 generic map (32) port map (sig_rega, ID_EXout(41 downto 10), cEXo(9), sig_mx1);
 	MUX_2op: mux_2x1 generic map (32) port map (sig_regb, ID_EXout(41 downto 10), cEXo(3), sig_mx2);
 	MUX_Reg: mux_4x1 generic map (32) port map (sig_regb, sig_ulao, ID_EXout(137 downto 106), 
 			ID_EXout(137 downto 106), cEXo(2 downto 1), sig_reg);
-	MUX_NPCJ: mux_4x1 generic map (32) port map (sig_npcj, sig_rega, sig_mx2, sig_mx2, 
+	MUX_NPCJ: mux_4x1 generic map (32) port map (sig_npcj, sig_mx1, jump_to, jump_to, 
 			cEXo(8 downto 7), sig_mx_npcj);
-	ULArit: ula port map (sig_rega, sig_mx2, cEXo(6 downto 4), sig_ulao, sig_zero);
+	ULArit: ula port map (sig_mx1, sig_mx2, cEXo(6 downto 4), sig_ulao, sig_zero);
 	EXMD: ex_md port map (pause, bubb, cWBo, cMDo, sig_mx_npcj, sig_zero, sig_ulao, sig_reg, sig_endreg, clkEX_MD, 
 			cWBo1, cMDo1, zero, EX_MDout);
 	

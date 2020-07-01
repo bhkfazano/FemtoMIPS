@@ -28,7 +28,7 @@ FAMILY=Xilinx14x SPARTAN3
 WindowVisible=0
 
 [HierarchyViewer]
-HierarchyInformation=femto_mips|arch_femto_MIPS|0    
+HierarchyInformation=femto_mips|arch_femto_MIPS|0           
 ShowHide=ShowTopLevel
 Selected=
 

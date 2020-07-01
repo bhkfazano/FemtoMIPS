@@ -39,8 +39,9 @@ architecture arch_femto_MIPS of femto_MIPS is
 			
 			cWBo: out std_logic_vector(1 downto 0);	 
 			cMDo: out std_logic_vector(2 downto 0);
-			cEXo: out std_logic_vector(8 downto 0);
-			ID_EXout: out std_logic_vector(137 downto 0));
+			cEXo: out std_logic_vector(9 downto 0);
+			ID_EXout: out std_logic_vector(137 downto 0);
+			jump_to: out std_logic_vector(31 downto 0));
 	end component;
 	
 	component instruction_execution is
@@ -50,8 +51,9 @@ architecture arch_femto_MIPS of femto_MIPS is
 			ID_EXout: in std_logic_vector(137 downto 0);
 			cWBo: in std_logic_vector(1 downto 0);
 			cMDo: in std_logic_vector(2 downto 0);
-			cEXo: in std_logic_vector(8 downto 0);
+			cEXo: in std_logic_vector(9 downto 0);
 			clkEX_MD: in std_logic;
+			jump_to: in std_logic_vector(31 downto 0);
 			
 			cWBo1: out std_logic_vector(1 downto 0);
 			cMDo1: out std_logic_vector(2 downto 0);
@@ -90,8 +92,9 @@ architecture arch_femto_MIPS of femto_MIPS is
 	
 	signal sigID_cWBo: std_logic_vector(1 downto 0);
 	signal sigID_cMDo: std_logic_vector(2 downto 0);
-	signal sigID_cEXo: std_logic_vector(8 downto 0);
+	signal sigID_cEXo: std_logic_vector(9 downto 0);
 	signal sigID_ID_EXout: std_logic_vector(137 downto 0);
+	signal sigID_jump_to: std_logic_vector(31 downto 0);
 	
 	signal sigEX_cWBo1: std_logic_vector(1 downto 0);
 	signal sigEX_cMDo1: std_logic_vector(2 downto 0);
@@ -127,10 +130,10 @@ begin
 	I_F: instruction_fetch port map (sig_cont_en, pause_if, bubb_if, sig_clk, sig_clk, sig_clk, sigMD_pcsrc, 
 			sigMD_npcj, sigIF_IF_IDout);
 	I_D: instruction_decode port map (pause_id, bubb_id, sigIF_IF_IDout, sigWB_dataw, sigWB_enderw, sigWB_regWrite, 
-			sig_clk, sigID_cWBo, sigID_cMDo, sigID_cEXo, sigID_ID_EXout);
+			sig_clk, sigID_cWBo, sigID_cMDo, sigID_cEXo, sigID_ID_EXout, sigID_jump_to);
 	E_X: instruction_execution port map (pause_ex, bubb_ex, sigEX_EX_MDout(95 downto 64), sigWB_dataw, sig_mux1_ctl, 
-			sig_mux2_ctl, sigID_ID_EXout, sigID_cWBo, sigID_cMDo, sigID_cEXo, sig_clk, sigEX_cWBo1, sigEX_cMDo1, 
-			sigEX_zero, sigEX_EX_MDout);
+			sig_mux2_ctl, sigID_ID_EXout, sigID_cWBo, sigID_cMDo, sigID_cEXo, sig_clk, sigID_jump_to, sigEX_cWBo1, 
+			sigEX_cMDo1, sigEX_zero, sigEX_EX_MDout);
 	M_D: memoria_dado port map (pause_md, bubb_md, sigEX_EX_MDout, sigEX_cWBo1, sigEX_cMDo1, sigEX_zero, sig_clk, 
 			sigMD_npcj, sigMD_pcsrc, sigMD_cWBo1, sigMD_MD_WBo);
 	W_B: write_back port map (sigMD_MD_WBo, sigMD_cWBo1, sig_clk, sigWB_regWrite, sigWB_enderw, sigWB_dataw);

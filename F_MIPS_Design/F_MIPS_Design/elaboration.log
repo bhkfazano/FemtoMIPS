@@ -1,4 +1,4 @@
-Active-HDL 11.1.262.7351 2020-06-27 01:29:02
+Active-HDL 11.1.262.7351 2020-07-01 20:06:45
 
 Elaboration top modules:
 Architecture                  arch_femto_MIPS(femto_MIPS)
@@ -51,3 +51,9 @@ f_mips_design                                      | None
 ieee                                               | Standard IEEE packages library
 std                                                | Standard VHDL library
 --------------------------------------------------------------------------------------------------------------------------
+
+
+Simulation Options: asim -O5 +access +r +m+femto_MIPS femto_MIPS arch_femto_MIPS
+
+
+The performance of simulation is reduced. Version Student Edition

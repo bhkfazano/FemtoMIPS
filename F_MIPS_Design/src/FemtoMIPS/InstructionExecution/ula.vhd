@@ -25,8 +25,8 @@ begin
 		sig_C <= std_logic_vector(signed(A) + signed(B)) when "000",
 			std_logic_vector(unsigned(A) + unsigned(B)) when "001",
 			const_zero(30 downto 0) & sig_set_on_less_than when "010",
-			A(31-to_integer(unsigned(B(10 downto 6))) downto 0) & 
-					const_zero(to_integer(unsigned(B(10 downto 6)))-1 downto 0) when "011",
+			B(31-to_integer(unsigned(A(10 downto 6))) downto 0) & 
+					const_zero(to_integer(unsigned(A(10 downto 6)))-1 downto 0) when "011",
 			sig_xor when "100",
 			sig_diff when "101",
 			(others => '0') when others;
