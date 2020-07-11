@@ -1,4 +1,3 @@
-i<>.\src\top_level.vhd
 i<>.\src\memoria_principal.vhd
 i<>.\src\femto_MIPS.vhd
 i<>.\src\__instruction_fetch.vhd

@@ -1,4 +1,4 @@
-Active-HDL 11.1.262.7351 2020-07-01 20:06:45
+Active-HDL 11.1.262.7351 2020-07-11 15:07:35
 
 Elaboration top modules:
 Architecture                  arch_femto_MIPS(femto_MIPS)
@@ -16,6 +16,8 @@ instruction_execution | arch_instruction_execution | f_mips_design |      | 11.1
 memoria_dado          | arch_memoria_dado          | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 write_back            | arch_write_back            | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 mux_2x1               | arch_mux_2x1               | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+and2                  | arch_and2                  | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
+memoria_principal     | arch_memoria_principal     | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 pc                    | arch_pc                    | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 soma_4                | arch_soma_4                | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 cache_instrucoes      | arch_cache_instrucoes      | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
@@ -29,7 +31,6 @@ shift_left_2          | arch_shift_left_2          | f_mips_design |      | 11.1
 soma                  | arch_soma                  | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 ula                   | arch_ula                   | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 ex_md                 | arch_ex_md                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
-and2                  | arch_and2                  | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 cache_dados           | arch_cache_dados           | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 md_wb                 | arch_md_wb                 | f_mips_design |      | 11.1.262.7351 (Windows) | -O3
 --------------------------------------------------------------------------------------------------------------------------
