@@ -11,7 +11,9 @@ entity instruction_fetch is
 		dadosin: in std_logic_vector(127 downto 0);
 		freeze_count: out std_logic;
 		enderout: out std_logic_vector(31 downto 0);
-		IF_IDout: out std_logic_vector(63 downto 0));
+		IF_IDout: out std_logic_vector(63 downto 0);
+		finish: out std_logic;
+		cont_hits, cont_misses, cont_memaccess: out std_logic_vector(31 downto 0));
 end instruction_fetch;
 
 architecture arch_instruction_fetch of instruction_fetch is
@@ -24,7 +26,7 @@ architecture arch_instruction_fetch of instruction_fetch is
 	end component;	
 	
 	component pc is
-		port( cont_en: in std_logic;
+		port( end_prog, cont_en: in std_logic;
 			pcin: in std_logic_vector(31 downto 0);
 			cPC: in std_logic;
 			pcout: out std_logic_vector(31 downto 0));
@@ -41,24 +43,26 @@ architecture arch_instruction_fetch of instruction_fetch is
 			dadosin: in std_logic_vector(127 downto 0);
 			pronto, clkC: in std_logic;
 			freeze_count: out std_logic;
-			enderout, dout: out std_logic_vector(31 downto 0));
+			enderout, dout, cont_hits, cont_misses, cont_memaccess: out std_logic_vector(31 downto 0));
 	end component;	   
 	
 	component if_id is
 		port( pause, bubb: in std_logic;
 			npc, inst: in std_logic_vector(31 downto 0);
 			cIF_ID: in std_logic;
-			out1: out std_logic_vector(63 downto 0));
+			out1: out std_logic_vector(63 downto 0);
+			stop_count, finish: out std_logic);
 	end component;
 
 	signal sig_newpc, sig_pc, sig_pc4, sig_inst: std_logic_vector(31 downto 0);
+	signal sig_stop_count: std_logic := '0';
 	
 begin
 	MUX: mux_2x1 generic map (32) port map (sig_pc4, npcj, selPC, sig_newpc);
-	PCount: pc port map (cont_en, sig_newpc, clkPC, sig_pc);
+	PCount: pc port map (sig_stop_count, cont_en, sig_newpc, clkPC, sig_pc);
 	SOMA4: soma_4 port map (sig_pc, sig_pc4);
 	CACHEINST: cache_instrucoes port map (write_atual, ender_atual, sig_pc, dadosin, pronto, clkCInst, 
-			freeze_count, enderout, sig_inst);
-	IFID: if_id port map (pause, bubb, sig_pc4, sig_inst, clkIF_ID, IF_IDout);
+			freeze_count, enderout, sig_inst, cont_hits, cont_misses, cont_memaccess);
+	IFID: if_id port map (pause, bubb, sig_pc4, sig_inst, clkIF_ID, IF_IDout, sig_stop_count, finish);
 		
 end arch_instruction_fetch;

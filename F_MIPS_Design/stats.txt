@@ -1,0 +1,33 @@
+Número de ciclos: 69
+Tempo de execução (ns): 690
+ 
+CACHE DE INSTRUÇÕES
+Número de hits: 37
+Número de misses: 1
+Hit ratio (%): 97
+Número de acessos à memória: 4
+ 
+CACHE DE DADOS
+Número de hits: 5
+Número de misses: 1
+Hit ratio (%): 83
+Número de acessos à memória: 7
+ 
+INSTRUÇÕES
+Número total de instruções: 16
+Número de instruções ADD: 0
+                     SLT: 1
+                     JR: 0
+                     ADDU: 1
+                     SLL: 4
+                     MUL: 1
+                     LW: 2
+                     SW: 4
+                     ADDI: 2
+                     BEQ: 0
+                     SLTI: 1
+                     BNE: 0
+                     J: 0
+                     JAL: 0
+ 
+100*CPI: 431

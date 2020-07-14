@@ -3,7 +3,11 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity instruction_decode is
-	port( pause, bubb: in std_logic;
+	port( finishEX_out, finishMD_out, cont_en, pause_if, bubb_if: in std_logic;
+		cont_cycles: in std_logic_vector(31 downto 0);
+		ci_cont_hits, ci_cont_misses, ci_cont_memaccess: in std_logic_vector(31 downto 0);
+		cd_cont_hits, cd_cont_misses, cd_cont_memaccess: in std_logic_vector(31 downto 0);
+		finish_in, pause, bubb: in std_logic;
 		RIout: in std_logic_vector(63 downto 0);
 		dataw: in std_logic_vector(31 downto 0);
 		enderw: in std_logic_vector(4 downto 0);
@@ -13,7 +17,8 @@ entity instruction_decode is
 		cMDo: out std_logic_vector(2 downto 0);
 		cEXo: out std_logic_vector(9 downto 0);
 		ID_EXout: out std_logic_vector(137 downto 0);
-		jump_to: out std_logic_vector(31 downto 0));
+		jump_to: out std_logic_vector(31 downto 0);
+		finish_out: out std_logic);
 end instruction_decode;
 
 architecture arch_instruction_decode of instruction_decode is
@@ -32,7 +37,11 @@ architecture arch_instruction_decode of instruction_decode is
 	end component; 
 	
 	component uc1 is
-		port( func: in std_logic_vector(5 downto 0);
+		port( finishIF_out, finishEX_out, finishMD_out, cont_en, pause_if, bubb_if, clk: in std_logic;
+			cont_cycles_in: in std_logic_vector(31 downto 0);
+			ci_cont_hits_in, ci_cont_misses_in, ci_cont_memaccess_in: in std_logic_vector(31 downto 0);
+			cd_cont_hits_in, cd_cont_misses_in, cd_cont_memaccess_in: in std_logic_vector(31 downto 0);
+			func: in std_logic_vector(5 downto 0);
 			contin: in std_logic_vector(5 downto 0);
 			cWB: out std_logic_vector(1 downto 0);	 
 			cMD: out std_logic_vector(2 downto 0);
@@ -40,7 +49,7 @@ architecture arch_instruction_decode of instruction_decode is
 	end component;
 	
 	component id_ex is
-		port( pause, bubb: in std_logic;
+		port( finish_in, pause, bubb: in std_logic;
 			cWB: in std_logic_vector(1 downto 0);	 
 			cMD: in std_logic_vector(2 downto 0);
 			cEX: in std_logic_vector(9 downto 0);	
@@ -53,9 +62,10 @@ architecture arch_instruction_decode of instruction_decode is
 			rt, rd: in std_logic_vector(4 downto 0);
 			clkID_EX: in std_logic;
 			jump_to_in: in std_logic_vector(31 downto 0);
-		
-			jump_to: out std_logic_vector(31 downto 0);			
-			ID_EXout: out std_logic_vector(137 downto 0));
+			
+			jump_to: out std_logic_vector(31 downto 0);
+			ID_EXout: out std_logic_vector(137 downto 0);
+			finish_out: out std_logic);
 	end component;
 	
 	signal sig_cWB: std_logic_vector(1 downto 0);
@@ -67,9 +77,12 @@ begin
 	MEM_REG: mem_register port map (clkID_EX, RIout(57 downto 53), RIout(52 downto 48), enderw, dataw, rw,
 		sig_rega, sig_regb);
 	SIGN_EXT: sign_extend port map (RIout(47 downto 32), sig_sext);
-	UC_1: uc1 port map (RIout(37 downto 32), RIout(63 downto 58), sig_cWB, sig_cMD, sig_cEX);
-	ID_EXec: id_ex port map (pause, bubb, sig_cWB, sig_cMD, sig_cEX, cWBo, cMDo, cEXo, RIout(31 downto 0), sig_rega, 
-		sig_regb, sig_sext, RIout(52 downto 48), RIout(47 downto 43), clkID_EX, sig_jump_to, jump_to, ID_EXout);
+	UC_1: uc1 port map (finish_in, finishEX_out, finishMD_out, cont_en, pause_if, bubb_if, clkID_EX, cont_cycles, 
+			ci_cont_hits, ci_cont_misses, ci_cont_memaccess, cd_cont_hits, cd_cont_misses, cd_cont_memaccess, 
+			RIout(37 downto 32), RIout(63 downto 58), sig_cWB, sig_cMD, sig_cEX);
+	ID_EXec: id_ex port map (finish_in, pause, bubb, sig_cWB, sig_cMD, sig_cEX, cWBo, cMDo, cEXo, RIout(31 downto 0), 
+		sig_rega, sig_regb, sig_sext, RIout(52 downto 48), RIout(47 downto 43), clkID_EX, sig_jump_to, jump_to, 
+		ID_EXout, finish_out);
 	
 	sig_jump_to <= RIout(31 downto 28) & RIout(57 downto 32) & "00";
 		

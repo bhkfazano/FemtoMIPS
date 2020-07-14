@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity instruction_execution is
-	port( pause, bubb: in std_logic;
+	port( finish_in, pause, bubb: in std_logic;
 		reg_md, dataw: in std_logic_vector(31 downto 0);
 		mux1_ctl, mux2_ctl: in std_logic_vector(1 downto 0);
 		ID_EXout: in std_logic_vector(137 downto 0);
@@ -17,7 +17,8 @@ entity instruction_execution is
 		cMDo1: out std_logic_vector(2 downto 0);
 		zero: out std_logic;
 		
-		EX_MDout: out std_logic_vector(100 downto 0));
+		EX_MDout: out std_logic_vector(100 downto 0);
+		finish_out: out std_logic);
 end instruction_execution;
 
 architecture arch_instruction_execution of instruction_execution is
@@ -54,7 +55,7 @@ architecture arch_instruction_execution of instruction_execution is
 	end component;
 	
 	component ex_md is
-		port( pause, bubb: in std_logic;
+		port( finish_in, pause, bubb: in std_logic;
 			cWBo: in std_logic_vector(1 downto 0);
 			cMDo: in std_logic_vector(2 downto 0);
 			npcj: in std_logic_vector(31 downto 0);
@@ -66,7 +67,8 @@ architecture arch_instruction_execution of instruction_execution is
 			cWBo1: out std_logic_vector(1 downto 0);
 			cMDo1: out std_logic_vector(2 downto 0);
 			zeroo: out std_logic;
-			EX_MDo: out std_logic_vector(100 downto 0));
+			EX_MDo: out std_logic_vector(100 downto 0);
+			finish_out: out std_logic);
 	end component;
 	
 	signal sig_sl2, sig_npcj, sig_mx_npcj, sig_mx1, sig_mx2, sig_ulao, sig_reg: std_logic_vector(31 downto 0);
@@ -92,7 +94,7 @@ begin
 	MUX_NPCJ: mux_4x1 generic map (32) port map (sig_npcj, sig_mx1, jump_to, jump_to, 
 			cEXo(8 downto 7), sig_mx_npcj);
 	ULArit: ula port map (sig_mx1, sig_mx2, cEXo(6 downto 4), sig_ulao, sig_zero);
-	EXMD: ex_md port map (pause, bubb, cWBo, cMDo, sig_mx_npcj, sig_zero, sig_ulao, sig_reg, sig_endreg, clkEX_MD, 
-			cWBo1, cMDo1, zero, EX_MDout);
+	EXMD: ex_md port map (finish_in, pause, bubb, cWBo, cMDo, sig_mx_npcj, sig_zero, sig_ulao, sig_reg, sig_endreg, 
+			clkEX_MD, cWBo1, cMDo1, zero, EX_MDout, finish_out);
 	
 end arch_instruction_execution;

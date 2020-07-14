@@ -7,7 +7,7 @@ entity cache_dados is
 		dadosin: in std_logic_vector(127 downto 0);
 		ender_atual, endr, endw, dataw: in std_logic_vector(31 downto 0);
 		pause_pipe, miss, write_en: out std_logic;
-		dadosout, enderout, datao: out std_logic_vector(31 downto 0));
+		dadosout, enderout, datao, cont_hits, cont_misses, cont_memaccess: out std_logic_vector(31 downto 0));
 end cache_dados;
 
 architecture arch_cache_dados of cache_dados is
@@ -28,6 +28,8 @@ architecture arch_cache_dados of cache_dados is
 	signal sig_pause_pipe, sig_miss, sig_write_en: std_logic := '0';
 	signal sig_dadosout, sig_enderout, sig_datao: std_logic_vector(31 downto 0) := (others => '0');
 	
+	signal sig_cont_hits, sig_cont_misses, sig_cont_memaccess: std_logic_vector(31 downto 0) := (others => '0');
+	
 begin
 	process is
 	begin
@@ -38,11 +40,13 @@ begin
 			sig_pause_pipe <= '1';
 			if valid(to_integer(unsigned(endr(15 downto 8)))) = '1' and 
 							tag(to_integer(unsigned(endr(15 downto 8)))) = endr(7 downto 6) then
+				sig_cont_hits <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_hits)) + 1, 32));
 				wait for 4.95 ns;
 				data_aux <= data(to_integer(unsigned(endr(15 downto 8))));
 				sig_datao <= data_aux(
 						32*to_integer(unsigned(endr(5 downto 2))) to 32*to_integer(unsigned(endr(5 downto 2)))+31);
 			else
+				sig_cont_misses <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_misses)) + 1, 32));
 				sig_miss <= '1';
 				sig_enderout <= (31 downto 16 => '0') & endr(15 downto 6) & "000000";
 				
@@ -87,6 +91,7 @@ begin
 					wait until pronto = '1';
 				end if;
 				
+				sig_cont_memaccess <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_memaccess)) + 4, 32));
 				data(to_integer(unsigned(endr(15 downto 8)))) <= data_pt1 & data_pt2 & data_pt3 & dadosin;
 				valid(to_integer(unsigned(endr(15 downto 8)))) <= '1';
 				tag(to_integer(unsigned(endr(15 downto 8)))) <= endr(7 downto 6);
@@ -102,6 +107,7 @@ begin
 			sig_pause_pipe <= '1';
 			if valid(to_integer(unsigned(endw(15 downto 8)))) /= '1' or 
 							tag(to_integer(unsigned(endw(15 downto 8)))) /= endw(7 downto 6) then
+				sig_cont_misses <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_misses)) + 1, 32));
 				sig_miss <= '1';
 				sig_enderout <= (31 downto 16 => '0') & endw(15 downto 6) & "000000";
 				
@@ -146,11 +152,15 @@ begin
 					wait until pronto = '1';
 				end if;
 				
+				sig_cont_memaccess <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_memaccess)) + 4, 32));
 				data(to_integer(unsigned(endw(15 downto 8)))) <= data_pt1 & data_pt2 & data_pt3 & dadosin;
 				valid(to_integer(unsigned(endw(15 downto 8)))) <= '1';
 				tag(to_integer(unsigned(endw(15 downto 8)))) <= endw(7 downto 6);
 				sig_miss <= '0';
+			else
+				sig_cont_hits <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_hits)) + 1, 32));
 			end if;
+			
 			wait for 4.95 ns;
 			data_aux <= data(to_integer(unsigned(endw(15 downto 8))));
 			data_aux(32*to_integer(unsigned(endw(5 downto 2))) to 32*to_integer(unsigned(endw(5 downto 2)))+31) 
@@ -175,6 +185,7 @@ begin
 					wait until pronto = '1';
 				end if;
 				
+				sig_cont_memaccess <= std_logic_vector(to_unsigned(to_integer(unsigned(sig_cont_memaccess)) + 1, 32));
 				sig_miss <= '0';
 				sig_write_en <= '0';
 				wbuffer_ender <= endw;
@@ -190,5 +201,8 @@ begin
 	dadosout <= sig_dadosout;
 	enderout <= sig_enderout;
 	datao <= sig_datao;
+	cont_hits <= sig_cont_hits;
+	cont_misses <= sig_cont_misses;
+	cont_memaccess <= sig_cont_memaccess;
 	
 end arch_cache_dados;
